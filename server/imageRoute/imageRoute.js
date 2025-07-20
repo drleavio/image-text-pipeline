@@ -8,7 +8,7 @@ const router=express.Router()
 
 class ImageClassificationPipeline {
     static task = 'image-classification';
-    static model = 'Xenova/vit-base-patch16-224'; // Vision Transformer for image classification
+    static model = 'Xenova/vit-base-patch16-224';
     static instance = null;
   
     static async getInstance(progress_callback = null) {
