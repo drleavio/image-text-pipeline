@@ -68,7 +68,6 @@ async function initializeImageModels() {
       console.log('🎉 All models initialized successfully!');
             
     } catch (error) {
-      isTextModelLoading = false;
       isImageModelLoading = false;
       console.error('❌ Error initializing models:', error);
     }
@@ -84,6 +83,7 @@ async function initializeImageModels() {
     }
   }
   router.use('/uploads', express.static('uploads'));
+
 
   router.post('/classify/image', upload.single('image'), async (req, res) => {
     let filePath = null;
