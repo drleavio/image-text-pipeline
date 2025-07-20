@@ -16,7 +16,8 @@ const {
     imageClassifier,
     isImageModelLoading,
     ImageClassificationPipeline
-}=require("../imageRoute/imageRoute")
+}=require("../imageRoute/imageRoute");
+const authMiddleware = require('../middleware');
 
 
 const app = express();
@@ -26,8 +27,8 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/image", imageRoute);
-app.use("/api/text", textRoute);
+app.use("/api/image",authMiddleware, imageRoute);
+app.use("/api/text",authMiddleware, textRoute);
 
 app.get('/health', (req, res) => {
   res.json({ 
